@@ -23,7 +23,7 @@ namespace test_Directum.Classes
         /// </summary>
         public List<User> UserBook;
 
-        IBase CurrentBase { get; set; }
+        protected IBase CurrentBase { get; set; }
 
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace test_Directum.Classes
 
         public bool CallByNumber(string number)
         {
-            return CurrentBase.Call(this, number);
+            return (CurrentBase==null)?false:CurrentBase.Call(this, number);
         }
 
         public bool CallByUserName(User User)

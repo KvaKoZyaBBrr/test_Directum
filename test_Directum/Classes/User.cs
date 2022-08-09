@@ -6,6 +6,9 @@ using System.Threading.Tasks;
 
 namespace test_Directum.Classes
 {
+    /// <summary>
+    /// пользователи для книги контактов
+    /// </summary>
     public class User
     {
         public string Name { get; set; }

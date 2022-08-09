@@ -6,18 +6,16 @@ using System.Threading.Tasks;
 
 namespace test_Directum.Classes
 {
-    public class Base : IBase
+    /// <summary>
+    /// класс базы с 3g
+    /// подвязываем только телефоны 3g
+    /// если нужнодобавлять любые телефоны, то оставляем только "спец" обработку привызове 
+    /// </summary>
+    public class Base3G : IBase
     {
         public List<IPhone> Phones { get; set; }
-
-        /// <summary>
-        /// звоним
-        /// </summary>
-        /// <param name="dest">пересылаем звонок от</param>
-        /// <param name="number"> кому звоним</param>
-        /// <returns>созвонились или нет</returns>
-        public bool Call(IPhone dest, string number)
-        {
+        public new bool Call(IPhone dest, string number) {
+            //специальная обработка
             if (Phones.Where(x => x.Number == number).Count() > 0)
             {
                 //тут можно открыть свзяь между тем с кем связываемся и dest, для передачи потока свзяи
@@ -27,9 +25,9 @@ namespace test_Directum.Classes
             return false;
         }
 
-        public bool RegPhone(IPhone phone)
+        public new bool RegPhone(IPhone phone)
         {
-            if (phone.GetType() != typeof(Phone))
+            if (phone.GetType() != typeof(Phone3G))
                 return false;
             if (Phones == null)
             {
